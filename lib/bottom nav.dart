@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:imat_abroad/profile.dart';
 import 'package:imat_abroad/settings.dart';
-import 'home_abroad.dart';
+import 'home.dart';
 
 
 void main()
