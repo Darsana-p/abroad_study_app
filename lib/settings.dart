@@ -124,7 +124,7 @@ class _SettingsFormState extends State<SettingsForm> {
               ),
             ),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Container(
             width: 400,
             height: 50,
