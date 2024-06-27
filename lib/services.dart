@@ -32,7 +32,7 @@ class ServicePage extends StatelessWidget {
                 Shadow(
                   blurRadius: 10.0,
                   color: Colors.black.withOpacity(0.5),
-                  offset: const Offset(2.0, 2.0),
+                  offset:const Offset(2.0, 2.0),
                 ),
               ],
             ),
