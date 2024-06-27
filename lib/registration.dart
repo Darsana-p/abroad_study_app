@@ -43,6 +43,9 @@ class RegistrationPage extends StatelessWidget {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your name';
                         }
+                        if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+                          return 'Name must contain only alphabetic characters';
+                        }
                         return null;
                       },
                     ),
@@ -67,8 +70,7 @@ class RegistrationPage extends StatelessWidget {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your phone number';
                         }
-
-                        if (value.length != 10) {
+                        if (!RegExp(r'^\d{10}$').hasMatch(value)) {
                           return 'Phone number must be exactly 10 digits';
                         }
                         return null;
