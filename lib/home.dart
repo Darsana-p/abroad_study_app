@@ -28,7 +28,7 @@ class _HomeAbroadState extends State<homeabroad> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IMAT Abroad'),
+        title: const Text('Imat Abroad'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -54,7 +54,7 @@ class _HomeAbroadState extends State<homeabroad> {
               title: const Text('Form'),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Abroad_form()));
+                    .push(MaterialPageRoute(builder: (context) => const Abroad_form()));
               },
             ),
             ListTile(

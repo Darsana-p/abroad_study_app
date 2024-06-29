@@ -45,13 +45,13 @@ class _AbroadFormState extends State<Abroad_form> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ).createShader(bounds),
-                    child:  Text(
+                    child:  const Text(
                       "Referral Partner Registration",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
                 ),
-                 SizedBox(height: 10),
+                  SizedBox(height: 10),
                 _buildTextField(_fnameController, "First Name", "Please enter the name", "Name must contain only alphabets"),
                 _buildTextField(_lnameController, "Last Name", "Please enter the name", "Name must contain only alphabets"),
                 _buildTextField(_stphnoController, "Student Phone Number", "Please enter your phone number", "Phone number must be 10 digits", r'^\d{10}$'),
