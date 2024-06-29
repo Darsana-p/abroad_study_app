@@ -45,7 +45,7 @@ class _AbroadFormState extends State<Abroad_form> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ).createShader(bounds),
-                    child: const Text(
+                    child:  Text(
                       "Referral Partner Registration",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
