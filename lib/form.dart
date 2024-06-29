@@ -34,7 +34,7 @@ class _AbroadFormState extends State<Abroad_form> {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding:const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,13 +45,13 @@ class _AbroadFormState extends State<Abroad_form> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ).createShader(bounds),
-                    child:  const Text(
+                    child:const Text(
                       "Referral Partner Registration",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
                 ),
-                  SizedBox(height: 10),
+                 const SizedBox(height: 10),
                 _buildTextField(_fnameController, "First Name", "Please enter the name", "Name must contain only alphabets"),
                 _buildTextField(_lnameController, "Last Name", "Please enter the name", "Name must contain only alphabets"),
                 _buildTextField(_stphnoController, "Student Phone Number", "Please enter your phone number", "Phone number must be 10 digits", r'^\d{10}$'),
@@ -76,7 +76,7 @@ class _AbroadFormState extends State<Abroad_form> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => homeabroad())); // Ensure homeabroad is imported or defined
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => homeabroad()));
                       }
                     },
                     style: ElevatedButton.styleFrom(

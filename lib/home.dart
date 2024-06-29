@@ -42,20 +42,13 @@ class _HomeAbroadState extends State<homeabroad> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "App name",
+                    "App name or logo",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
                   Text("Dare to dream"),
                 ],
               ),
-            ),
-            ListTile(
-              title: const Text('Form'),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => const Abroad_form()));
-              },
             ),
             ListTile(
               title: const Text('Services'),
@@ -98,7 +91,7 @@ class _HomeAbroadState extends State<homeabroad> {
                 side: const BorderSide(color: Color(0x14), width: 0.5),
               ),
               child: Container(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     begin: Alignment.topLeft,
