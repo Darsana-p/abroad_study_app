@@ -1,147 +1,133 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/gradient_borders.dart';
+import 'home.dart';
 
 void main() {
-  runApp(Abroad_form());
+  runApp(const MaterialApp(
+    home: Abroad_form(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class Abroad_form extends StatelessWidget {
+class Abroad_form extends StatefulWidget {
+  const Abroad_form({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Registration Form',
-      theme: ThemeData(
-
-      ),
-      home: RegistrationForm(),debugShowCheckedModeBanner: false,
-    );
-  }
+  State<Abroad_form> createState() => _AbroadFormState();
 }
-
-class RegistrationForm extends StatefulWidget {
-  @override
-  _RegistrationFormState createState() => _RegistrationFormState();
-}
-
-class _RegistrationFormState extends State<RegistrationForm> {
-  final _formKey = GlobalKey<FormState>();
-
-  String _firstName = '';
-  String _lastName = '';
-  String _studentPhoneNumber = '';
-  String _parentPhoneNumber = '';
-  String _email = '';
-  String _location = '';
-  String _lastQualification = '';
-  String _preferredCourse = '';
-  String _preferredCountry = '';
-  String _level = '';
+class _AbroadFormState extends State<Abroad_form> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _fnameController = TextEditingController();
+  final TextEditingController _lnameController = TextEditingController();
+  final TextEditingController _stphnoController = TextEditingController();
+  final TextEditingController _phnoController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _qualificationController = TextEditingController();
+  final TextEditingController _courseController = TextEditingController();
+  final TextEditingController _levelController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Center(child: Text('Registration Form')),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: ShaderMask(
+                    shaderCallback: (bounds) => const LinearGradient(
+                      colors: [Colors.black, Colors.red],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ).createShader(bounds),
+                    child: const Text(
+                      "Referral Partner Registration",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                ),
+                 SizedBox(height: 10),
+                _buildTextField(_fnameController, "First Name", "Please enter the name", "Name must contain only alphabets"),
+                _buildTextField(_lnameController, "Last Name", "Please enter the name", "Name must contain only alphabets"),
+                _buildTextField(_stphnoController, "Student Phone Number", "Please enter your phone number", "Phone number must be 10 digits", r'^\d{10}$'),
+                _buildTextField(_phnoController, "Parent Phone Number", "Please enter your phone number", "Phone number must be 10 digits", r'^\d{10}$'),
+                _buildTextField(_emailController, "Email", "Please enter your email", "Please enter a valid email", r'.+@.+\..+'),
+                _buildTextField(_locationController, "Location", "Please enter your location"),
+                _buildTextField(_qualificationController, "Last Qualification", "Please enter your qualification", "Please enter a valid qualification"),
+                _buildTextField(_courseController, "Preferred Course", "Please enter your preferred course", "Please enter a valid course"),
+                _buildTextField(_levelController, "Level", "Please enter your level", "Please enter a valid level"),
+                const SizedBox(height: 10),
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    gradient: LinearGradient(
+                      colors: [Colors.black, Colors.red],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => homeabroad())); // Ensure homeabroad is imported or defined
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                    child: const Text(
+                      "Submit",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-        body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Form(
-              key: _formKey,
-              child: ListView(
-                children: <Widget>[
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'First Name'),
-                    onChanged: (value) {
-                      _firstName = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Last Name'),
-                    onChanged: (value) {
-                      _lastName = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Student Phone Number'),
-                    keyboardType: TextInputType.phone,
-                    onChanged: (value) {
-                      _studentPhoneNumber = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Email'),
-                    keyboardType: TextInputType.emailAddress,
-                    onChanged: (value) {
-                      _email = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Location'),
-                    onChanged: (value) {
-                      _location = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Last Qualification'),
-                    onChanged: (value) {
-                      _lastQualification = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration:const InputDecoration(labelText: 'Preferred Course'),
-                    onChanged: (value) {
-                      _preferredCourse = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration:const InputDecoration(labelText: 'Preferred Country'),
-                    onChanged: (value) {
-                      _preferredCountry = value;
-                    },
-                  ),
-                  TextFormField(
-                    decoration:const InputDecoration(labelText: 'Level'),
-                    onChanged: (value) {
-                      _level = value;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    width:400,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient:const LinearGradient(
-                        colors: [Colors.red, Colors.black],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    child: ElevatedButton(onPressed: (){if (_formKey.currentState!.validate()){
-                      print('First Name: $_firstName');
-                      print('Last Name: $_lastName');
-                      print('Student Phone Number: $_studentPhoneNumber');
-                      print('Parent Emergency Contact: $_parentPhoneNumber');
-                      print('Email: $_email');
-                      print('Location: $_location');
-                      print('Last Qualification: $_lastQualification');
-                      print('Preferred Course: $_preferredCourse');
-                      print('Preferred Country: $_preferredCountry');
-                      print('Level: $_level');
-                    }
-                    },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child:const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 20)),
-                    ),
-                  )],
-              ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(TextEditingController controller, String label, String emptyMessage, [String? invalidMessage, String? regex]) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          border: GradientOutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            gradient: const LinearGradient(
+              colors: [Colors.red, Colors.black],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            ),
-        );
-    }
+          ),
+          label: Text(label),
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return emptyMessage;
+          } else if (regex != null && !RegExp(regex).hasMatch(value)) {
+            return invalidMessage;
+          }
+          return null;
+        },
+      ),
+    );
+  }
 }
