@@ -103,7 +103,7 @@ class _HomePageState extends State<onboarding> {
                     onPressed: () {
                       if (skipCounter < 0) {
                         _controller.nextPage(
-                            duration: const Duration(milliseconds: 350),
+                            duration:  Duration(milliseconds: 350),
                             curve: Curves.easeInOut);
                         skipCounter++;
                       } else {
