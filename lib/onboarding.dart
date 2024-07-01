@@ -61,7 +61,7 @@ class _HomePageState extends State<onboarding> {
             SmoothPageIndicator(
               controller: _controller,
               count: 3,
-              effect: const ExpandingDotsEffect(
+              effect:  ExpandingDotsEffect(
                 activeDotColor: Color.fromARGB(255, 253, 48, 48),
                 dotColor: Color.fromARGB(170, 110, 110, 110),
                 dotHeight: 8,
